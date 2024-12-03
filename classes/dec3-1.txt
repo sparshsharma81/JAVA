@@ -1,0 +1,34 @@
+BRUTE FORCE APPROACH--
+
+TO SORT A MERGED OF TWO ARRAYS--
+CREATE A NEW ARRAY OF SIZE: N+M ---C;
+INSERT ALL THE ELEMENTS OF A & B TO C 
+SORT C-ARRAY;
+
+TIME COMPLEXICITY -- (N+M)LOG(N+M)
+
+
+
+OPTIMAL APPROACH--
+
+
+A = [1,5,7,10];
+B = [2,4,6,8];
+
+C = [   ]
+
+while(i<m && j<n) then do the comparision....
+
+while(i<m) insert all element of A into C
+while(j<n) insert all element of B into C.
+
+
+
+
+hackerRank -- for language based learning -- java
+
+leetcode -- for dsa
+
+codeforce-- for ultimate problem solving skilss---
+for scenario based questions 
+refer the blogs of each contest
