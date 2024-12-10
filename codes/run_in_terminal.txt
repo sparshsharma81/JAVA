@@ -1,0 +1,11 @@
+now we are running the file in the terminal...
+
+first we need to make the file in the notepad and then we just save it with the .java extension..
+
+then we can compile it using the javac file.java
+and we can run it with java file
+
+
+
+JAVAC JAVA1.JAVA
+JAVA JAVA1.JAVA
