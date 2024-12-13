@@ -18,6 +18,7 @@ public class reverse_number {
         }
 
         // Print the reversed number
+        
         System.out.println("Reversed number: " + reversed);
     }
 }
