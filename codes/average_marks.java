@@ -4,7 +4,7 @@ public class average_marks {
         System.out.println("We are calculating the average marks of students...");
         System.out.print("Enter the size of the array");
         Scanner sc = new Scanner(System.in);
-        int a = sc.nextInt();
+        int a = sc.nextInt();   
         int sum = 0;
         int [] arr = new int[a];
         for(int i = 0; i<a;i++){
