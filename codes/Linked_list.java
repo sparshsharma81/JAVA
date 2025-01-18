@@ -37,13 +37,96 @@ public class Linked_list {
         }
         tail = temp;
     }
-    void display(){
-        while(head!=null){
-            System.out.println(head.data+" ");
-            head = head.next;
+    void insertAtBeginning(int val){
+        Node temp = new Node(val);
+        if(head==null){
+            //iska matlab hai ki list empty hai
+            head = temp;
+            tail = temp;
+        }
+        else{
+            //iska matlab non empty linked list hai
+            temp.next = head;
+            head = temp;
+        }
+
+    }
+    void insertAt(int idx, int val){
+        Node p = new Node(val);
+        Node temp = head;
+        for(int i=1;i<idx;i++){
+            temp = temp.next;
+            //this loop signify ki hame jis index pr element insert karna hai..
+            //hame uss index se ek pehle leke jaana hai so that ham required index pr element insert kar sake;
 
         }
+        p.next = temp.next; 
+//now this code means that jab ham apni required position tk puch gye..then yani ki jo element hame insert karna hai..
+//uss element ko temp.next ke saat join kardo...
+
+        temp.next = p;
+        //then hame jo element insert karna hai...hm use join kar dege inserted element ke saath;;;
+    } //this code is valid till all the index between head and tail but at the last index...
+    //it will add the elements..but the tail pointer will not point towards them
+
+    int getAt(int idx){
+        Node temp = head;
+        for(int i =1;i<=idx;i++){
+            temp = temp.next;
+
+        } 
+        return temp.data;
+
+
     }
+    
+    void deleteAt(int idx){
+        if(head == null) return; //iska matlab ki linked list empty hai
+        if(idx==0){
+            //iska matlba first element ko delete karna hai yani ki head ko first element set karna hoga--
+            head = head.next;
+            if(head == null){
+                tail = null;
+
+            }
+            return;
+        }
+        Node temp = head;
+        for(int i =1;i<idx;i++){
+            temp = temp.next;
+
+
+        }
+        if(temp.next!=null && temp.next.next == null){
+            tail = temp;
+        }
+        temp.next = temp.next.next;
+        
+
+    }
+    void display() {
+        Node temp = head;  // Use temp to traverse instead of modifying head
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println();  // To move to the next line after printing
+    }
+    // public static class linked_listt{
+    //     Node head = null;
+    //     Node tail  = null;
+
+    //     void insertAtBeginning(){
+    //         Node temp2 = new Node(int val2);
+    //         if(head==null){
+    //             head = temp;
+    //         }
+    //         else{
+                
+    //         }
+    //     }
+
+    // }
 }
     public static void main(String args[]){
         /*
@@ -101,6 +184,23 @@ public class Linked_list {
                 System.out.println(len);
                 linkedlist l1 = new linkedlist();
                 l1.insertAtEnd(2);
+                l1.display();
+                l1.insertAtEnd(9);
+                l1.display();
+                l1.insertAtBeginning(0);
+                l1.insertAtBeginning(21);
+                l1.insertAtBeginning(2323);
+                l1.insertAt(2, 222);
+                
+                l1.display();
+                int a1 = l1.getAt(3);
+                System.out.println(a1);
+
+                l1.deleteAt(3);
+                l1.display();
+                System.out.println(l1.tail.data);
+                l1.deleteAt();
+                l1.display();
                
     }
 }
