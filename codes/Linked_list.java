@@ -199,7 +199,7 @@ public class Linked_list {
                 l1.deleteAt(3);
                 l1.display();
                 System.out.println(l1.tail.data);
-                l1.deleteAt();
+                l1.deleteAt(2);
                 l1.display();
                
     }
