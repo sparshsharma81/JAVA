@@ -48,7 +48,7 @@ public class StringOperations {
         // 11. Mutable Strings
         StringBuilder sb = new StringBuilder("Hello");
         sb.append(" World"); // Modify StringBuilder
-        StringBuffer sbf = new StringBuffer("Hello");
+        StringBuffer1 sbf = new StringBuffer1("Hello");
         sbf.append(" World"); // Modify StringBuffer
 
         // Outputs
