@@ -1,0 +1,5 @@
+diamond problem
+
+when a class/ interface inherits two or more interface having common ancestors
+
+level of inhertance
