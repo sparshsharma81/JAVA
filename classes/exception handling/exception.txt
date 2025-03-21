@@ -1,0 +1,6 @@
+exception handling are of three types
+1.check ----handle exception class 
+2.uncheck ---run time exception class ko handle karte hai 
+3.custom
+
+
