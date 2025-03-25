@@ -1,0 +1,74 @@
+single test cases exist in this scenario
+
+
+there are three types of constructors 
+--they do not return anything
+there is no return type for them
+
+constructors are only called once
+
+1.non parameterized constructors 
+
+//in java we do not need to write destructors --- in java --there is garbage collector
+
+polymorphism 
+1.run time polymorphism
+2.compile time polymorphism
+
+
+
+compile time polymorphism 
+
+different different functions with same name
+ 
+ public void printInfo(String name){
+    System.out.println(name) 
+    }
+
+    public void printInfo(int age){
+        System.out.println(age);
+
+    }
+    public void printInfo(String name, int age){
+        System.out.println(name + "" + age);
+    }
+
+
+
+    inheritance 
+    ---ek class ki property dusri class lena chahti hai
+
+    4 types of inheritance in java
+    1.single level inheritance
+    2.multi level inheritance
+    3.heirarchial inheritance
+    4.hybrid inheritance
+
+
+
+
+    access modifiers 
+    1.private
+    2.protected
+    3.public 
+    4.default 
+
+
+
+    encapsulation ---
+    data and function ko combine karna 
+    ---data hiding ---
+
+
+
+    abstracct --- showing important things and hiding non important things 
+    abstracct --- this is a blueprint --- like a concept 
+
+    
+    interface ke andar koi bhi non abstract function nahi ho sakta 
+
+    --we implement interfaces in java
+    implement is basically like inheritance ...
+      if we implements a interface then all
+
+      in interfaces ...all the filee
