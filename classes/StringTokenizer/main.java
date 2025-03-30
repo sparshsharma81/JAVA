@@ -9,6 +9,7 @@ class B extends A {
      void show() {
         System.out.println("B");
     }
+    //inheritance
 }
 
 class C extends B {
