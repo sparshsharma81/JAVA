@@ -17,6 +17,8 @@ public class filehandling {
 
 
     Filewriter writer = new FileWriter(file,true);
+
+        //we can solve it ...
     
     }
 
