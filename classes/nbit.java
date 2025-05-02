@@ -26,7 +26,7 @@ Constraints:
 
 1 <= n <= 231 - 1
          */
-        //basically the approach we gonna use in this code is binary search and math
+        //basically the approach we gonna use in this code is binary search and math ... and solve it
          
     }
 }
