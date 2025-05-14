@@ -309,29 +309,37 @@ public class HostelManagementSystem {
                     String date = sc.nextLine();
                     removeVisitorLog(visitorName, studentId, date);
                 }
-                case 9 -> {
-                    for (Visitor v : visitorLogs) {
-                        System.out.println("Visitor: " + v.visitorName + ", Visited ID: " + v.studentId + ", Date: " + v.date);
+              case 9 -> {
+                    if (visitorLogs.isEmpty()) {
+                        System.out.println("No visitor logs available.");
+                    } else {
+                        System.out.println("Visitor Logs:");
+                        for (Visitor v : visitorLogs) {
+                            System.out.println("Visitor: " + v.visitorName + ", Visited ID: " + v.studentId + ", Date: " + v.date);
+                        }
                     }
                 }
                 case 10 -> inorderDisplay(root);
                 case 11 -> {
-                    System.out.print("Enter Student ID to Mark Attendance: ");
-                    int studentId = sc.nextInt(); sc.nextLine();
+                    System.out.print("Enter Student ID: ");
+                    int sid = sc.nextInt(); sc.nextLine();
                     System.out.print("Enter Date (dd-mm-yyyy): ");
                     String date = sc.nextLine();
-                    System.out.print("Is Present (true/false): ");
-                    boolean isPresent = sc.nextBoolean();
-                    markAttendance(studentId, date, isPresent);
+                    System.out.print("Was the student present? (yes/no): ");
+                    String status = sc.nextLine().trim().toLowerCase();
+                    boolean isPresent = status.equals("yes");
+                    markAttendance(sid, date, isPresent);
                 }
                 case 12 -> {
-                    System.out.print("Enter Student ID to View Attendance: ");
-                    int studentId = sc.nextInt();
-                    viewAttendance(studentId);
+                    System.out.print("Enter Student ID: ");
+                    int sid = sc.nextInt(); sc.nextLine();
+                    viewAttendance(sid);
                 }
-                case 0 -> System.out.println("Exiting...");
-                default -> System.out.println("Invalid choice! Please try again.");
+                case 0 -> System.out.println("Exiting Hostel Management System...");
+                default -> System.out.println("Invalid choice! Try again.");
             }
+
+            System.out.println(); // Blank line for readability
         } while (choice != 0);
 
         sc.close();
