@@ -19,6 +19,9 @@ public class project3 {
     static Student root = null; //statis root binary serach tree ka node starting point hai
     static Stack<Student> deletedStudentsStack = new Stack<>();
 
+    //here we have used stack..the logic behind using the stack is that we are doing the undo delete operations
+    ///suppose agar kisi user ne delete kr diya..aur use undo krna hai..to uske liye stack use hoga
+
     // ==== ROOM ALLOCATION ====
     static Map<Integer, ArrayList<Student>> roomAllocation = new HashMap<>(); //ye hai hashmap room allocation k lye...basically...
     //ime arraylist use hua hai...list of students jo kamre mee hai...
