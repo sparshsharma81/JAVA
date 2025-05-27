@@ -1,33 +1,35 @@
 import java.util.*;
 
-public class HostelManagementSystem {
+public class project3 
 
-    // ==== STUDENT (BST Node) ====
+    // ==== student class hai --- bst node hai.......
     static class Student {
         int id;
         String name;
         int roomNumber;
-        Student left, right;
+        Student left, right;   //student apne left aur right ko point kar raha hai
 
-        Student(int id, String name) {
+        Student(int id, String name) { //basic constructor
             this.id = id;
             this.name = name;
-            this.roomNumber = -1; // -1 means no room assigned
+            this.roomNumber = -1; // -1 means koi kamra assign nhi hua
         }
     }
 
-    static Student root = null;
+    static Student root = null; //statis root binary serach tree ka node starting point hai
 
     // ==== ROOM ALLOCATION ====
-    static Map<Integer, ArrayList<Student>> roomAllocation = new HashMap<>();
-    static int roomCapacity = 2;
+    static Map<Integer, ArrayList<Student>> roomAllocation = new HashMap<>(); //ye hai hashmap room allocation k lye...basically...
+    //ime arraylist use hua hai...list of students jo kamre mee hai...
+    static int roomCapacity = 2; //ek kamre me 2 log hoge....
 
     // ==== VISITOR LOG ====
     static class Visitor {
         String visitorName;
         int studentId;
         String date;
-
+//ye basically visistor ko count krne k liye
+//isme linked list ka use hua hai..kiss bacche se kon milne aaya tha
         Visitor(String visitorName, int studentId, String date) {
             this.visitorName = visitorName;
             this.studentId = studentId;
@@ -38,48 +40,64 @@ public class HostelManagementSystem {
     static LinkedList<Visitor> visitorLogs = new LinkedList<>();
 
     // ==== ATTENDANCE ====
+    //hashmap...for attendence....
     static class Attendance {
         String date;
         boolean isPresent;
 
         Attendance(String date, boolean isPresent) {
             this.date = date;
-            this.isPresent = isPresent;
+            this.isPresent = isPresent; //constrcutor...true or false/
         }
     }
 
     static Map<Integer, ArrayList<Attendance>> attendanceRecords = new HashMap<>();
+    //has
 
-    // ==== BST OPERATIONS ====
+
+
+    //SABSE PEHLE YE HAI --------- insertStudnet() --- insertion
+    ///then  ----------------------- searchStudent() ---- seartion
+    ///  then ----------------------- deleteStudent() -- deletion 
+    /// 
+
+
+    // ==== BST K OPERATIONS ====
     static Student insertStudent(Student root, int id, String name) {
-        if (root == null) return new Student(id, name);
-        if (id < root.id) root.left = insertStudent(root.left, id, name);
-        else if (id > root.id) root.right = insertStudent(root.right, id, name);
-        return root;
+        if (root == null) return new Student(id, name); //AGAR TREE EMPTY HAI..TO NAYA NODE CREATE HO JAYEGA...
+        if (id < root.id) root.left = insertStudent(root.left, id, name); //SMALLER ID..GO TO LEFT.
+        else if (id > root.id) root.right = insertStudent(root.right, id, name); //LARGER ID..GO TO RIGHT
+        //AGAR EQUAL HAI..TO IGNORE...
+        return root; 
     }
 
     static Student searchStudent(Student root, int id) {
-        if (root == null || root.id == id) return root;
+        if (root == null || root.id == id) return root; //AGAR ROOT ID NULL HO YA...MATCH KR GYI HO TO RETURN ./..
         if (id < root.id) return searchStudent(root.left, id);
         return searchStudent(root.right, id);
+        //BASIC RECURSSION SE SEARCH HOGA LEFT AUR RIGHT TREE ME...
     }
 
     static Student deleteStudent(Student root, int id) {
-        if (root == null) return root;
+        if (root == null) return root; //ismka mtlb tree khali hai..user maje le raha hai..pheli fursat me nikal....
 
         if (id < root.id) root.left = deleteStudent(root.left, id);
+        //recurrsively search hoga...
         else if (id > root.id) root.right = deleteStudent(root.right, id);
         else {
             if (root.left == null) return root.right;
             else if (root.right == null) return root.left;
+            //agar node ka sirf ek hi baccha hai..to return krdo koi bhi child...left ya right
 
-            root.id = minValue(root.right);
-            root.right = deleteStudent(root.right, root.id);
+            root.id = minValue(root.right); //
+            root.right = deleteStudent(root.right, root.id); //node ko delete krne k baad uski parent directory ko thik krdega ...
         }
         return root;
     }
 
-    static int minValue(Student root) {
+    static int minValue(Student root) { //ye bst me deletion k liye hota hai... 
+        //when we want to delete a node with two child...
+
         int min = root.id;
         while (root.left != null) {
             min = root.left.id;
@@ -88,9 +106,15 @@ public class HostelManagementSystem {
         return min;
     }
 
-    static void inorderDisplay(Student root) {
+
+    //////inodrder display -=--- student ko inorder me dispolay kren k liye
+    /// /// allocateRoomToStudent --- kamra pakad apna aur nikal pheli fursat me...
+    /// 
+
+    static void inorderDisplay(Student root) { 
+        //ab ye hai inorder display..to show student --- in order.......
         if (root != null) {
-            inorderDisplay(root.left);
+            inorderDisplay(root.left); 
             System.out.println("ID: " + root.id + ", Name: " + root.name + ", Room: " + root.roomNumber);
             inorderDisplay(root.right);
         }
@@ -99,16 +123,17 @@ public class HostelManagementSystem {
     static void allocateRoomToStudent(int id) {
         Student student = searchStudent(root, id);
         if (student == null) {
+            //ye id se search karega...
             System.out.println("Student not found!");
             return;
         }
-
+//basically binary serach tree me search krega..
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter Room Number to Allocate: ");
         int roomNumber = sc.nextInt();
         sc.nextLine();
 
-        if (!roomAllocation.containsKey(roomNumber)) {
+        if (!roomAllocation.containsKey(roomNumber)) { //basic operation hai...
             roomAllocation.put(roomNumber, new ArrayList<>());
         }
 
@@ -123,8 +148,8 @@ public class HostelManagementSystem {
         }
     }
 
-    static void unallocateRoomFromStudent(int id) {
-        Student student = searchStudent(root, id);
+    static void unallocateRoomFromStudent(int id) { //--ye basically throw out kr dega baccho ko....pehli fursat me nikal...
+        Student student = searchStudent(root, id); //ye simply serach krega...
         if (student == null) {
             System.out.println("Student not found!");
             return;
@@ -142,12 +167,13 @@ public class HostelManagementSystem {
     }
 
     static void removeVisitorLog(String visitorName, int studentId, String date) {
-        Iterator<Visitor> iterator = visitorLogs.iterator();
+        Iterator<Visitor> iterator = visitorLogs.iterator(); //iterator basically search krne k liye use hota hai....
+        //initilize an iterator to loop through visitorLogs as a linked list...
         boolean found = false;
 
-        while (iterator.hasNext()) {
+        while (iterator.hasNext()) { //iterator though each visitor log...
             Visitor v = iterator.next();
-            if (v.visitorName.equals(visitorName) && v.studentId == studentId && v.date.equals(date)) {
+            if (v.visitorName.equals(visitorName) && v.studentId == studentId && v.date.equals(date)) { //check all details visitor name, student id , visit date
                 iterator.remove();
                 found = true;
                 System.out.println("Visitor log removed.");
@@ -160,6 +186,8 @@ public class HostelManagementSystem {
         }
     }
 
+    //real life analogy --- student are stored in searchable direcotry (bst-) = rooms are like boxes...
+
     static void markAttendance(int studentId, String date, boolean isPresent) {
         Student student = searchStudent(root, studentId);
         if (student == null) {
@@ -169,9 +197,10 @@ public class HostelManagementSystem {
 
         if (!attendanceRecords.containsKey(studentId)) {
             attendanceRecords.put(studentId, new ArrayList<>());
+            //agar studnet ki attendece list me nhi ho..to empty list initilize kr dega...
         }
 
-        ArrayList<Attendance> attendanceList = attendanceRecords.get(studentId);
+        ArrayList<Attendance> attendanceList = attendanceRecords.get(studentId); //usme baad list mil jayegi....
         for (Attendance record : attendanceList) {
             if (record.date.equals(date)) {
                 System.out.println("Attendance already marked for this date.");
@@ -179,20 +208,23 @@ public class HostelManagementSystem {
             }
         }
 
-        attendanceList.add(new Attendance(date, isPresent));
+        attendanceList.add(new Attendance(date, isPresent)); //if not already mark... to present laga jayegi...
         System.out.println("Attendance marked for " + student.name);
     }
 
-    static void viewAttendance(int studentId) {
+    static void viewAttendance(int studentId) { //attdence recores ko dekhne k liye...
         Student student = searchStudent(root, studentId);
         if (student == null) {
             System.out.println("Student not found!");
             return;
+            //agar student nhi mila...to error msg
         }
+
+        //agar student mil gya..to uske attendence me search kreag...
 
         ArrayList<Attendance> attendanceList = attendanceRecords.get(studentId);
         if (attendanceList == null || attendanceList.isEmpty()) {
-            System.out.println("No attendance records for " + student.name);
+            System.out.println("No attendance records for " + student.name); 
             return;
         }
 
@@ -203,9 +235,10 @@ public class HostelManagementSystem {
     }
 
     static void initializeRooms() {
+        //hanara maksad ye hai ki ham kuch rooms ko phelse se hi define kar dete hai..taaki stduetn baade me entry inme le skte/..
         roomAllocation.put(101, new ArrayList<>());
         roomAllocation.put(102, new ArrayList<>());
-        roomAllocation.put(103, new ArrayList<>());
+        roomAllocation.put(103, new ArrayList<>()); //yaha pr hashmap use hua tha...
     }
 
     public static void main(String[] args) {
@@ -330,4 +363,4 @@ public class HostelManagementSystem {
 
         sc.close();
     }
-}
+

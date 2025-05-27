@@ -15,7 +15,7 @@ public class clockwise_traversal {
         // }
         // while(top<=bottom){
         //     for(int i =0;i<arr.length;i++){
-        //         System.err.print(arr[top][right]);
+        //         System.err.print(arr[toṇp][right]);
                
         //     }
         //     right--;
