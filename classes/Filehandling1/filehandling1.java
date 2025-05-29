@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileWriter;
+import java.util.Scanner;
 
 
 
@@ -37,4 +38,19 @@ Likewise,
 Because it saves resources and flushes remaining data to the file 
      
      */
+
+
+
+     File myfile = new File("first.txt");
+     try{
+        Scanner sc= new Scanner(myfile);
+        while(myfile.hasNextLine()){
+            String line = sc.nextLine();
+
+            System.out.println(line);
+        }
+     }
+     catch(Exception e){
+        e.printStackTrace();
+     }
 }
